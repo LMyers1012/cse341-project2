@@ -25,7 +25,7 @@ content-type: application/json
 
 
 ### UPDATE CONTACT on LOCALHOST (Please paste in _id of correct item to update)
-PUT http://localhost:8080/students/6260ad836e12ccf345d9a417 HTTP/1.1
+PUT http://localhost:8080/students/627014721bfc2d16275a765e HTTP/1.1
 Content-Type: application/json
 
 //Update favoriteColor
@@ -33,7 +33,7 @@ Content-Type: application/json
   "firstName":"Zayden",
   "lastName":"Myers",
   "birthday":"08/12/2013",
-  "beltLevel": "blue",
+  "beltLevel": "Blue",
   "class": "Junior Samurais",
   "instructor": "Jeff Pierce",
   "parentFirstName": "Chris",
