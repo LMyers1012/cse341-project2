@@ -1,0 +1,94 @@
+// **************
+// LOCALHOST 
+// **************
+
+### READ ALL from LOCALHOST
+GET http://localhost:8080/students 
+### READ ONE from LOCALHOST
+GET http://localhost:8080/students/6260ab666e12ccf345d9a415 
+
+
+### CREATE CONTACT on LOCALHOST
+POST http://localhost:8080/students HTTP/1.1
+content-type: application/json
+
+{
+  "firstName":"Zoey",
+  "lastName":"Myers",
+  "birthday":"10/10/2011",
+  "beltLevel": "blue",
+  "class": "Youth/Adult",
+  "instructor": "David Anderson",
+  "parentFirstName": "Lindsey",
+  "parentLastName": "Myers"
+}
+
+
+### UPDATE CONTACT on LOCALHOST (Please paste in _id of correct item to update)
+PUT http://localhost:8080/students/6260ad836e12ccf345d9a417 HTTP/1.1
+Content-Type: application/json
+
+//Update favoriteColor
+{
+  "firstName":"Zayden",
+  "lastName":"Myers",
+  "birthday":"08/12/2013",
+  "beltLevel": "blue",
+  "class": "Junior Samurais",
+  "instructor": "Jeff Pierce",
+  "parentFirstName": "Chris",
+  "parentLastName": "Myers"
+}
+
+### DELETE CONTACT on LOCALHOST (Please paste in _id of correct item to delete)
+DELETE http://localhost:8080/students/6260ac386e12ccf345d9a416 HTTP/1.1
+
+
+
+
+
+// *************************
+// HEROKU PRODUCTION Deploy 
+// *************************
+
+### READ ALL from HEROKU
+GET https://cse341lmyersproject2.herokuapp.com/students 
+### READ ONE from HEROKU
+GET https://cse341lmyersproject2.herokuapp.com/students/6260ab666e12ccf345d9a415
+ 
+
+
+
+### CREATE CONTACT on HEROKU
+POST http://cse341lmyersproject2.herokuapp.com/students HTTP/1.1
+Content-Type: application/json
+
+{
+  "firstName":"Zayden",
+  "lastName":"Myers",
+  "birthday":"08/12/2013",
+  "beltLevel": "blue",
+  "class": "Junior Samurais",
+  "instructor": "Jeff Pierce",
+  "parentFirstName": "Chris",
+  "parentLastName": "Myers"
+}
+
+### UPDATE CONTACT on HEROKU (Please paste in _id of correct item to update)
+PUT http://cse341lmyersproject2.herokuapp.com/students/6260ad836e12ccf345d9a417 HTTP/1.1
+Content-Type: application/json
+
+// Update favoriteColor
+{
+  "firstName":"Zoey",
+  "lastName":"Myers",
+  "birthday":"10/10/2011",
+  "beltLevel": "blue",
+  "class": "Youth/Adult",
+  "instructor": "David Anderson",
+  "parentFirstName": "Lindsey",
+  "parentLastName": "Myers"
+}
+
+### DELETE CONTACT on HEROKU (Please paste in _id of correct item to delete)
+DELETE http://cse341lmyersproject2.herokuapp.com/students/62674c20d86fb57c2ea15e51 HTTP/1.1
