@@ -9,3 +9,5 @@ function stringIsValid(string) {
     return true;
   }
 }
+
+module.exports = { dateIsValid, stringIsValid };

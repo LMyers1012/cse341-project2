@@ -1,9 +1,9 @@
 const mongodb = require('../db/connect');
-const ObjectId = require('mongodb').ObjectId;
 const validate = require('../models/input_validation');
+const ObjectId = require('mongodb').ObjectId;
 
 // Get entire list of contacts from contacts collection in mongodb
-const getAllStudents = async (req, res, next) => {
+async function getAllStudents(req, res, next) {
   try {
     const result = await mongodb.getDb().db().collection('students').find();
     result.toArray().then((lists) => {
@@ -13,7 +13,7 @@ const getAllStudents = async (req, res, next) => {
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
-};
+}
 
 // Get a single contact by id
 const getStudentById = async (req, res, next) => {
@@ -39,11 +39,11 @@ const createNewStudent = async (req, res, next) => {
       validate.stringIsValid(req.body.firstName) &&
       validate.stringIsValid(req.body.lastName) &&
       validate.dateIsValid(req.body.birthday) &&
-      validate.stringIsValid(beltLevel) &&
-      validate.stringIsValid(classGroup) &&
-      validate.stringIsValid(instructor) &&
-      validate.stringIsValid(parentFirstName) &&
-      validate.stringIsValid(parentLastName)
+      validate.stringIsValid(req.body.beltLevel) &&
+      validate.stringIsValid(req.body.classGroup) &&
+      validate.stringIsValid(req.body.instructor) &&
+      validate.stringIsValid(req.body.parentFirstName) &&
+      validate.stringIsValid(req.body.parentLastName)
     ) {
       const student = {
         firstName: req.body.firstName,
@@ -71,9 +71,7 @@ const createNewStudent = async (req, res, next) => {
           );
       }
     } else {
-      res
-        .status(500)
-        .json(response.error || 'One or more data inputs is invalid.');
+      res.status(500).json('One or more data inputs is invalid.');
     }
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -87,11 +85,11 @@ const updateStudent = async (req, res, next) => {
       validate.stringIsValid(req.body.firstName) &&
       validate.stringIsValid(req.body.lastName) &&
       validate.dateIsValid(req.body.birthday) &&
-      validate.stringIsValid(beltLevel) &&
-      validate.stringIsValid(classGroup) &&
-      validate.stringIsValid(instructor) &&
-      validate.stringIsValid(parentFirstName) &&
-      validate.stringIsValid(parentLastName)
+      validate.stringIsValid(req.body.beltLevel) &&
+      validate.stringIsValid(req.body.classGroup) &&
+      validate.stringIsValid(req.body.instructor) &&
+      validate.stringIsValid(req.body.parentFirstName) &&
+      validate.stringIsValid(req.body.parentLastName)
     ) {
       const student = {
         firstName: req.body.firstName,
@@ -120,9 +118,7 @@ const updateStudent = async (req, res, next) => {
           );
       }
     } else {
-      res
-        .status(500)
-        .json(response.error || 'One or more data inputs is invalid.');
+      res.status(500).json('One or more data inputs is invalid.');
     }
   } catch (err) {
     res.status(500).json({ message: err.message });
