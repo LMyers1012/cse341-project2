@@ -40,27 +40,25 @@ const createNewInstructor = async (req, res, next) => {
       validate.stringIsValid(req.body.lastName) &&
       validate.dateIsValid(req.body.birthday) &&
       validate.stringIsValid(req.body.beltLevel) &&
-      validate.stringIsValid(req.body.classGroup) &&
-      validate.stringIsValid(req.body.instructor) &&
-      validate.stringIsValid(req.body.parentFirstName) &&
-      validate.stringIsValid(req.body.parentLastName)
+      validate.stringIsValid(req.body.style) &&
+      validate.stringIsValid(req.body.strengths) &&
+      validate.stringIsValid(req.body.classes)
     ) {
-      const student = {
+      const instructor = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        birthday: req.body.birthday,
-        beltLevel: req.body.beltLevel,
-        classGroup: req.body.classGroup,
-        instructor: req.body.instructor,
-        parentFirstName: req.body.parentFirstName,
-        parentLastName: req.body.parentLastName,
+        beltLevel: req.body.birthday,
+        birthday: req.body.beltLevel,
+        style: req.body.style,
+        strengths: req.body.strengths,
+        classes: req.body.classes,
       };
 
       const response = await mongodb
         .getDb()
         .db()
         .collection('instructors')
-        .insertOne(student);
+        .insertOne(instructor);
       if (response.acknowledged) {
         res.status(201).json(response);
       } else {
@@ -86,27 +84,25 @@ const updateInstructor = async (req, res, next) => {
       validate.stringIsValid(req.body.lastName) &&
       validate.dateIsValid(req.body.birthday) &&
       validate.stringIsValid(req.body.beltLevel) &&
-      validate.stringIsValid(req.body.classGroup) &&
-      validate.stringIsValid(req.body.instructor) &&
-      validate.stringIsValid(req.body.parentFirstName) &&
-      validate.stringIsValid(req.body.parentLastName)
+      validate.stringIsValid(req.body.style) &&
+      validate.stringIsValid(req.body.strengths) &&
+      validate.stringIsValid(req.body.classes)
     ) {
-      const student = {
+      const instructor = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-        birthday: req.body.birthday,
-        beltLevel: req.body.beltLevel,
-        classGroup: req.body.classGroup,
-        instructor: req.body.instructor,
-        parentFirstName: req.body.parentFirstName,
-        parentLastName: req.body.parentLastName,
+        beltLevel: req.body.birthday,
+        birthday: req.body.beltLevel,
+        style: req.body.style,
+        strengths: req.body.strengths,
+        classes: req.body.classes,
       };
 
       const response = await mongodb
         .getDb()
         .db()
         .collection('instructors')
-        .replaceOne({ _id: ObjectId(req.params.id) }, student);
+        .replaceOne({ _id: ObjectId(req.params.id) }, instructor);
       console.log(response);
       if (response.modifiedCount > 0) {
         res.status(204).send();

@@ -1,0 +1,65 @@
+[
+  {
+    "firstName": "Jeff",
+    "lastName": "Pierce",
+    "beltLevel": "Black-6th degree",
+    "birthday": "03/18/1982",
+    "style": ["Taekwondo", "Shotokan"],
+    "strengths": ["Self-defense", "Kata"],
+    "classes": ["Youth/Adult", "Junior Samurais", "Mini Ninjas"]
+  },
+  {
+    "firstName": "David",
+    "lastName": "Anderson",
+    "beltLevel": "Black-1st degree",
+    "birthday": "07/24/1989",
+    "style": ["Taekwondo"],
+    "strengths": ["Self-defense", "Competition"],
+    "classes": ["Junior Samurais", "Mini Ninjas"]
+  },
+  {
+    "firstName": "Kohlter",
+    "lastName": "Stenson",
+    "beltLevel": "Black-2nd degree",
+    "birthday": "02/13/2005",
+    "style": ["Taekwondo", "Shotokan"],
+    "strengths": ["Kata", "Sparring"],
+    "classes": ["Junior Samurais", "Mini Ninjas"]
+  },
+  {
+    "firstName": "Carter",
+    "lastName": "Cross",
+    "beltLevel": "Black-2nd degree",
+    "birthday": "10/08/2004",
+    "style": ["Taekwondo"],
+    "strengths": ["Self-defense", "Kata"],
+    "classes": ["Youth/Adult", "Junior Samurais"]
+  },
+  {
+    "firstName": "Parker",
+    "lastName": "Fujikawa",
+    "beltLevel": "Black-2nd degree",
+    "birthday": "08/09/2006",
+    "style": ["Shotokan"],
+    "strengths": ["Competition", "Kata", "Tricking"],
+    "classes": ["Junior Samurais", "Mini Ninjas"]
+  },
+  {
+    "firstName": "Nichole",
+    "lastName": "Stander",
+    "beltLevel": "Black-1st degree",
+    "birthday": "07/19/2001",
+    "style": ["Taekwondo", "Shotokan"],
+    "strengths": ["Self-defense", "Competition"],
+    "classes": ["Youth/Adult", "Junior Samurais", "Mini Ninjas"]
+  },
+  {
+    "firstName": "Lauren",
+    "lastName": "Wilson",
+    "beltLevel": "Black-2nd degree",
+    "birthday": "11/10/1990",
+    "style": ["Taekwondo", "Shotokan"],
+    "strengths": ["Self-defense", "Kata"],
+    "classes": ["Junior Samurais", "Mini Ninjas"]
+  }
+]
