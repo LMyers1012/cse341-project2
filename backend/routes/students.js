@@ -1,11 +1,11 @@
 const router = require('express').Router();
-const contactsController = require('../controllers/ema');
+const studentsController = require('../controllers/students');
 
 // Call functions based on url entered
-router.get('/', contactsController.getAllStudents);
-router.get('/:id', contactsController.getStudentById);
-router.post('/', contactsController.createNewStudent);
-router.put('/:id', contactsController.updateStudent);
-router.delete('/:id', contactsController.deleteStudentById);
+router.get('/', studentsController.getAllStudents);
+router.get('/:id', studentsController.getStudentById);
+router.post('/', studentsController.createNewStudent);
+router.put('/:id', studentsController.updateStudent);
+router.delete('/:id', studentsController.deleteStudentById);
 
 module.exports = router;

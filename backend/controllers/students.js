@@ -2,7 +2,7 @@ const mongodb = require('../db/connect');
 const validate = require('../models/input_validation');
 const ObjectId = require('mongodb').ObjectId;
 
-// Get entire list of contacts from contacts collection in mongodb
+// Get entire list of students from mongodb
 async function getAllStudents(req, res, next) {
   try {
     const result = await mongodb.getDb().db().collection('students').find();
@@ -15,7 +15,7 @@ async function getAllStudents(req, res, next) {
   }
 }
 
-// Get a single contact by id
+// Get a single student by id
 const getStudentById = async (req, res, next) => {
   try {
     const result = await mongodb
@@ -32,7 +32,7 @@ const getStudentById = async (req, res, next) => {
   }
 };
 
-// Create a new contact
+// Create a new student
 const createNewStudent = async (req, res, next) => {
   try {
     if (
@@ -78,7 +78,7 @@ const createNewStudent = async (req, res, next) => {
   }
 };
 
-// Update one contact by Id
+// Update one student by Id
 const updateStudent = async (req, res, next) => {
   try {
     if (
@@ -125,7 +125,7 @@ const updateStudent = async (req, res, next) => {
   }
 };
 
-// Delete one contact by Id
+// Delete one student by Id
 const deleteStudentById = async (req, res, next) => {
   try {
     const response = await mongodb

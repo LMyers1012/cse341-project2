@@ -7,9 +7,17 @@
   },
   "host": "cse341lmyersproject2.herokuapp.com",
   "basePath": "/",
-  "schemes": [
-    "https"
+  "tags": [
+    {
+      "name": "students",
+      "description": "Operations for students"
+    },
+    {
+      "name": "instructors",
+      "description": "Operations for instructors"
+    }
   ],
+  "schemes": ["https"],
   "paths": {
     "/api-docs": {
       "get": {
@@ -20,10 +28,9 @@
     },
     "/students/": {
       "get": {
+        "tags": ["students"],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [],
         "responses": {
           "200": {
@@ -35,6 +42,7 @@
         }
       },
       "post": {
+        "tags": ["students"],
         "description": "",
         "parameters": [
           {
@@ -55,7 +63,7 @@
                 "beltLevel": {
                   "example": "any"
                 },
-                "class": {
+                "classGroup": {
                   "example": "any"
                 },
                 "instructor": {
@@ -83,10 +91,9 @@
     },
     "/students/{id}": {
       "get": {
+        "tags": ["students"],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "parameters": [
           {
             "name": "id",
@@ -105,6 +112,7 @@
         }
       },
       "put": {
+        "tags": ["students"],
         "description": "",
         "parameters": [
           {
@@ -131,7 +139,7 @@
                 "beltLevel": {
                   "example": "any"
                 },
-                "class": {
+                "classGroup": {
                   "example": "any"
                 },
                 "instructor": {
@@ -157,6 +165,166 @@
         }
       },
       "delete": {
+        "tags": ["students"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/instructors/": {
+      "get": {
+        "tags": ["instructors"],
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": ["instructors"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "birthday": {
+                  "example": "any"
+                },
+                "beltLevel": {
+                  "example": "any"
+                },
+                "classGroup": {
+                  "example": "any"
+                },
+                "instructor": {
+                  "example": "any"
+                },
+                "parentFirstName": {
+                  "example": "any"
+                },
+                "parentLastName": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/instructors/{id}": {
+      "get": {
+        "tags": ["instructors"],
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": ["instructors"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "birthday": {
+                  "example": "any"
+                },
+                "beltLevel": {
+                  "example": "any"
+                },
+                "classGroup": {
+                  "example": "any"
+                },
+                "instructor": {
+                  "example": "any"
+                },
+                "parentFirstName": {
+                  "example": "any"
+                },
+                "parentLastName": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["instructors"],
         "description": "",
         "parameters": [
           {
