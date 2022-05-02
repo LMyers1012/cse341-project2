@@ -17,7 +17,7 @@ content-type: application/json
   "lastName":"Myers",
   "birthday":"10/10/2011",
   "beltLevel": "blue",
-  "class": "Youth/Adult",
+  "classGroup": "Youth/Adult",
   "instructor": "David Anderson",
   "parentFirstName": "Lindsey",
   "parentLastName": "Myers"
@@ -34,7 +34,7 @@ Content-Type: application/json
   "lastName":"Myers",
   "birthday":"08/12/2013",
   "beltLevel": "Blue",
-  "class": "Junior Samurais",
+  "classGroup": "Junior Samurais",
   "instructor": "Jeff Pierce",
   "parentFirstName": "Chris",
   "parentLastName": "Myers"
@@ -68,7 +68,7 @@ Content-Type: application/json
   "lastName":"Myers",
   "birthday":"08/12/2013",
   "beltLevel": "blue",
-  "class": "Junior Samurais",
+  "classGroup": "Junior Samurais",
   "instructor": "Jeff Pierce",
   "parentFirstName": "Chris",
   "parentLastName": "Myers"
@@ -84,7 +84,7 @@ Content-Type: application/json
   "lastName":"Myers",
   "birthday":"10/10/2011",
   "beltLevel": "blue",
-  "class": "Youth/Adult",
+  "classGroup": "Youth/Adult",
   "instructor": "David Anderson",
   "parentFirstName": "Lindsey",
   "parentLastName": "Myers"
