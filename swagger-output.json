@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Lindsey Myers - API",
-    "description": "CSE 341 Project 2",
+    "title": "Lindsey Myers - CSE 341 Project 2",
+    "description": "Evolutionary Martial Arts DB API",
     "version": "1.0.0"
   },
   "host": "cse341lmyersproject2.herokuapp.com",

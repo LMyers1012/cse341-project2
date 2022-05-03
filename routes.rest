@@ -2,10 +2,18 @@
 // LOCALHOST 
 // **************
 
-### READ ALL from LOCALHOST
+### READ ALL STUDENTS from LOCALHOST
 GET http://localhost:8080/students 
-### READ ONE from LOCALHOST
+### READ ONE STUDENT from LOCALHOST
 GET http://localhost:8080/students/6260ab666e12ccf345d9a415 
+
+
+### READ ALL INSTRUCTORS from LOCALHOST
+GET https://localhost:8080/instructors 
+### READ ONE INSTRUCTOR from LOCALHOST
+GET https://localhost:8080/instructors/627035b7f2fb6c0d79f3667b
+ 
+
 
 
 ### CREATE STUDENT on LOCALHOST
@@ -13,15 +21,32 @@ POST http://localhost:8080/students HTTP/1.1
 content-type: application/json
 
 {
-  "firstName":"Zoey",
-  "lastName":"Myers",
-  "birthday":"10/10/2011",
-  "beltLevel": "Blue",
-  "classGroup": "Youth/Adult",
+  "firstName":"Sage",
+  "lastName":"Wilkins",
+  "birthday":"02/08/2016",
+  "beltLevel": "Yellow",
+  "classGroup": "Mini Ninjas",
   "instructor": "David Anderson",
-  "parentFirstName": "Lindsey",
-  "parentLastName": "Myers"
+  "parentFirstName": "Ken",
+  "parentLastName": "Wilkins"
 }
+
+
+### CREATE INSTRUCTOR on LOCALHOST
+POST http://localhost:8080/instructors HTTP/1.1
+Content-Type: application/json
+
+{
+  "firstName": "Josh",
+  "lastName": "Danner",
+  "beltLevel": "Black-3rd degree",
+  "birthday": "11/17/1989",
+  "style": ["Taekwondo", "Shotokan"],
+  "strengths": ["Kata", "Competition", "Tricking"],
+  "classes": ["Youth/Adult", "Junior Samurais", "Mini Ninjas"]
+}
+
+
 
 
 ### UPDATE STUDENT on LOCALHOST (Please paste in _id of correct item to update)
@@ -40,8 +65,35 @@ Content-Type: application/json
   "parentLastName": "Myers"
 }
 
+
+### UPDATE INSTRUCTOR on LOCALHOST (Please paste in _id of correct item to update)
+PUT http://localhost:8080/instructors/627014541bfc2d16275a765d HTTP/1.1
+Content-Type: application/json
+
+// Update belt level
+{
+  "firstName": "Josh",
+  "lastName": "Danner",
+  "beltLevel": "Black-4th degree",
+  "birthday": "11/17/1989",
+  "style": ["Taekwondo", "Shotokan"],
+  "strengths": ["Kata", "Competition", "Tricking"],
+  "classes": ["Youth/Adult", "Junior Samurais", "Mini Ninjas"]
+}
+
+
+
+
 ### DELETE STUDENT on LOCALHOST (Please paste in _id of correct item to delete)
 DELETE http://localhost:8080/students/6260ac386e12ccf345d9a416 HTTP/1.1
+
+### DELETE INSTRUCTOR on LOCALHOST (Please paste in _id of correct item to delete)
+DELETE http://localhost:8080/instructors/62674c20d86fb57c2ea15e51 HTTP/1.1
+
+
+
+
+
 
 
 
@@ -51,10 +103,16 @@ DELETE http://localhost:8080/students/6260ac386e12ccf345d9a416 HTTP/1.1
 // HEROKU PRODUCTION Deploy 
 // *************************
 
-### READ ALL from HEROKU
+### READ ALL STUDENTS from HEROKU
 GET https://cse341lmyersproject2.herokuapp.com/students 
-### READ ONE from HEROKU
-GET https://cse341lmyersproject2.herokuapp.com/students/6260ab666e12ccf345d9a415
+### READ ONE STUDENT from HEROKU
+GET https://cse341lmyersproject2.herokuapp.com/students/627014541bfc2d16275a765d
+
+
+### READ ALL INSTRUCTORS from HEROKU
+GET https://cse341lmyersproject2.herokuapp.com/instructors 
+### READ ONE INSTRUCTOR from HEROKU
+GET https://cse341lmyersproject2.herokuapp.com/instructors/627035b7f2fb6c0d79f3667b
  
 
 
@@ -64,31 +122,72 @@ POST http://cse341lmyersproject2.herokuapp.com/students HTTP/1.1
 Content-Type: application/json
 
 {
-  "firstName":"Zayden",
-  "lastName":"Myers",
-  "birthday":"08/12/2013",
-  "beltLevel": "blue",
-  "classGroup": "Junior Samurais",
-  "instructor": "Jeff Pierce",
-  "parentFirstName": "Chris",
-  "parentLastName": "Myers"
+  "firstName":"Tayven",
+  "lastName":"Wilkins",
+  "birthday":"01/10/2012",
+  "beltLevel": "Green",
+  "classGroup": "Youth/Adult",
+  "instructor": "Carter Cross",
+  "parentFirstName": "Ken",
+  "parentLastName": "Wilkins"
 }
 
-### UPDATE STUDENT on HEROKU (Please paste in _id of correct item to update)
-PUT http://cse341lmyersproject2.herokuapp.com/students/6260ad836e12ccf345d9a417 HTTP/1.1
+
+### CREATE INSTRUCTOR on HEROKU
+POST http://cse341lmyersproject2.herokuapp.com/instructors HTTP/1.1
 Content-Type: application/json
 
-// Update favoriteColor
+{
+  "firstName": "Josh",
+  "lastName": "Danner",
+  "beltLevel": "Black-3rd degree",
+  "birthday": "11/17/1989",
+  "style": ["Taekwondo", "Shotokan"],
+  "strengths": ["Kata", "Competition", "Tricking"],
+  "classes": ["Youth/Adult", "Junior Samurais", "Mini Ninjas"]
+}
+
+
+
+
+### UPDATE STUDENT on HEROKU (Please paste in _id of correct item to update)
+PUT http://cse341lmyersproject2.herokuapp.com/students/627014541bfc2d16275a765d HTTP/1.1
+Content-Type: application/json
+
+// Update belt level
 {
   "firstName":"Zoey",
   "lastName":"Myers",
   "birthday":"10/10/2011",
-  "beltLevel": "blue",
+  "beltLevel": "Purple",
   "classGroup": "Youth/Adult",
   "instructor": "David Anderson",
   "parentFirstName": "Lindsey",
   "parentLastName": "Myers"
 }
 
+
+### UPDATE INSTRUCTOR on HEROKU (Please paste in _id of correct item to update)
+PUT http://cse341lmyersproject2.herokuapp.com/instructors/62719f18ab940257b8c94d68 HTTP/1.1
+Content-Type: application/json
+
+// Update belt level
+{
+  "firstName": "Josh",
+  "lastName": "Danner",
+  "beltLevel": "Black-4th degree",
+  "birthday": "11/17/1989",
+  "style": ["Taekwondo", "Shotokan"],
+  "strengths": ["Kata", "Competition", "Tricking"],
+  "classes": ["Youth/Adult", "Junior Samurais", "Mini Ninjas"]
+}
+
+
+
+
 ### DELETE STUDENT on HEROKU (Please paste in _id of correct item to delete)
 DELETE http://cse341lmyersproject2.herokuapp.com/students/62674c20d86fb57c2ea15e51 HTTP/1.1
+
+
+### DELETE INSTRUCTOR on HEROKU (Please paste in _id of correct item to delete)
+DELETE http://cse341lmyersproject2.herokuapp.com/instructors/62719ec0ab940257b8c94d67 HTTP/1.1
