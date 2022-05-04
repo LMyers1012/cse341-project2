@@ -122,12 +122,12 @@ POST http://cse341lmyersproject2.herokuapp.com/students HTTP/1.1
 Content-Type: application/json
 
 {
-  "firstName":"Tayven",
+  "firstName":"Sage",
   "lastName":"Wilkins",
-  "birthday":"01/10/2012",
-  "beltLevel": "Green",
-  "classGroup": "Youth/Adult",
-  "instructor": "Carter Cross",
+  "birthday":"02/08/2016",
+  "beltLevel": "Yellow",
+  "classGroup": "Mini Ninjas",
+  "instructor": "David Anderson",
   "parentFirstName": "Ken",
   "parentLastName": "Wilkins"
 }
