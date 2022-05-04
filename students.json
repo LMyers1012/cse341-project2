@@ -1,0 +1,52 @@
+[
+  {
+    "firstName": "Jack",
+    "lastName": "LaRossen",
+    "birthday": "09/13/2010",
+    "beltLevel": "Purple",
+    "classGroup": "Youth/Adult",
+    "instructor": "Jeff Pierce",
+    "parentFirstName": "Ashley",
+    "parentLastName": "LaRossen"
+  },
+  {
+    "firstName": "Oakley",
+    "lastName": "LaRossen",
+    "birthday": "02/27/2012",
+    "beltLevel": "Purple",
+    "classGroup": "Youth/Adult",
+    "instructor": "Jeff Pierce",
+    "parentFirstName": "Ashley",
+    "parentLastName": "LaRossen"
+  },
+  {
+    "firstName": "Kaeden",
+    "lastName": "Rove",
+    "birthday": "07/25/2008",
+    "beltLevel": "Brown",
+    "classGroup": "Youth/Adult",
+    "instructor": "Jeff Pierce",
+    "parentFirstName": "Danielle",
+    "parentLastName": "Rove"
+  },
+  {
+    "firstName": "Myelli",
+    "lastName": "Smith",
+    "birthday": "10/28/2012",
+    "beltLevel": "Orange",
+    "classGroup": "Junior Samurais",
+    "instructor": "Parker Fujikawa",
+    "parentFirstName": "Austen",
+    "parentLastName": "Smith"
+  },
+  {
+    "firstName": "Annie",
+    "lastName": "Buckler",
+    "birthday": "03/02/2018",
+    "beltLevel": "White",
+    "classGroup": "Mini Ninjas",
+    "instructor": "Kohlter Stenson",
+    "parentFirstName": "Matt",
+    "parentLastName": "Buckler"
+  }
+]

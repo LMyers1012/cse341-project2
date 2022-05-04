@@ -1,15 +1,21 @@
 const mongodb = require('../db/connect');
-const validate = require('../models/input_validation');
 const ObjectId = require('mongodb').ObjectId;
 
 // Get entire list of instructors from mongodb
 async function getAllInstructors(req, res, next) {
   try {
-    const result = await mongodb.getDb().db().collection('instructors').find();
-    result.toArray().then((lists) => {
-      res.setHeader('Content-Type', 'application/json');
-      res.status(200).json(lists);
-    });
+    mongodb
+      .getDb()
+      .db()
+      .collection('instructors')
+      .find()
+      .toArray((err, lists) => {
+        if (err) {
+          res.status(400).json({ message: err });
+        }
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).json(lists);
+      });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -17,16 +23,22 @@ async function getAllInstructors(req, res, next) {
 
 // Get a single instructor by id
 const getInstructorById = async (req, res, next) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Must use a valid contact id to find a contact.');
+  }
   try {
-    const result = await mongodb
+    mongodb
       .getDb()
       .db()
       .collection('instructors')
-      .find({ _id: ObjectId(req.params.id) });
-    result.toArray().then((lists) => {
-      res.setHeader('Content-Type', 'application/json');
-      res.status(200).json(lists);
-    });
+      .find({ _id: ObjectId(req.params.id) })
+      .toArray((err, result) => {
+        if (err) {
+          res.status(400).json({ message: err });
+        }
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).json(lists[0]);
+      });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -35,41 +47,29 @@ const getInstructorById = async (req, res, next) => {
 // Create a new instructor
 const createNewInstructor = async (req, res, next) => {
   try {
-    if (
-      validate.stringIsValid(req.body.firstName) &&
-      validate.stringIsValid(req.body.lastName) &&
-      validate.dateIsValid(req.body.birthday) &&
-      validate.stringIsValid(req.body.beltLevel) &&
-      validate.stringIsValid(req.body.style) &&
-      validate.stringIsValid(req.body.strengths) &&
-      validate.stringIsValid(req.body.classes)
-    ) {
-      const instructor = {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        beltLevel: req.body.birthday,
-        birthday: req.body.beltLevel,
-        style: req.body.style,
-        strengths: req.body.strengths,
-        classes: req.body.classes,
-      };
+    const instructor = {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      beltLevel: req.body.birthday,
+      birthday: req.body.beltLevel,
+      style: req.body.style,
+      strengths: req.body.strengths,
+      classes: req.body.classes,
+    };
 
-      const response = await mongodb
-        .getDb()
-        .db()
-        .collection('instructors')
-        .insertOne(instructor);
-      if (response.acknowledged) {
-        res.status(201).json(response);
-      } else {
-        res
-          .status(500)
-          .json(
-            response.error || 'An error occurred while creating the contact.'
-          );
-      }
+    const response = await mongodb
+      .getDb()
+      .db()
+      .collection('instructors')
+      .insertOne(instructor);
+    if (response.acknowledged) {
+      res.status(201).json(response);
     } else {
-      res.status(500).json('One or more data inputs is invalid.');
+      res
+        .status(500)
+        .json(
+          response.error || 'An error occurred while creating the contact.'
+        );
     }
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -78,43 +78,34 @@ const createNewInstructor = async (req, res, next) => {
 
 // Update one instructor by Id
 const updateInstructor = async (req, res, next) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Must use a valid contact id to find a contact.');
+  }
   try {
-    if (
-      validate.stringIsValid(req.body.firstName) &&
-      validate.stringIsValid(req.body.lastName) &&
-      validate.dateIsValid(req.body.birthday) &&
-      validate.stringIsValid(req.body.beltLevel) &&
-      validate.stringIsValid(req.body.style) &&
-      validate.stringIsValid(req.body.strengths) &&
-      validate.stringIsValid(req.body.classes)
-    ) {
-      const instructor = {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        beltLevel: req.body.birthday,
-        birthday: req.body.beltLevel,
-        style: req.body.style,
-        strengths: req.body.strengths,
-        classes: req.body.classes,
-      };
+    const instructor = {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      beltLevel: req.body.birthday,
+      birthday: req.body.beltLevel,
+      style: req.body.style,
+      strengths: req.body.strengths,
+      classes: req.body.classes,
+    };
 
-      const response = await mongodb
-        .getDb()
-        .db()
-        .collection('instructors')
-        .replaceOne({ _id: ObjectId(req.params.id) }, instructor);
-      console.log(response);
-      if (response.modifiedCount > 0) {
-        res.status(204).send();
-      } else {
-        res
-          .status(500)
-          .json(
-            response.error || 'An error occurred while updating the contact.'
-          );
-      }
+    const response = await mongodb
+      .getDb()
+      .db()
+      .collection('instructors')
+      .replaceOne({ _id: ObjectId(req.params.id) }, instructor);
+    console.log(response);
+    if (response.modifiedCount > 0) {
+      res.status(204).send();
     } else {
-      res.status(500).json('One or more data inputs is invalid.');
+      res
+        .status(500)
+        .json(
+          response.error || 'An error occurred while updating the contact.'
+        );
     }
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -123,6 +114,9 @@ const updateInstructor = async (req, res, next) => {
 
 // Delete one instructor by Id
 const deleteInstructorById = async (req, res, next) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(400).json('Must use a valid contact id to find a contact.');
+  }
   try {
     const response = await mongodb
       .getDb()

@@ -22,6 +22,14 @@ app
   })
   .use('/', require('./backend/routes'));
 
+// Catch-all for logging errors in console
+process.on('uncaughtException', (err, origin) => {
+  console.log(
+    process.stderr.fd,
+    `Caught exception: ${err}\n` + `Exception origin: ${origin}`
+  );
+});
+
 mongodb.initDb((err, mongodb) => {
   if (err) {
     console.log(err);
