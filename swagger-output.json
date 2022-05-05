@@ -1,23 +1,25 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Lindsey Myers - CSE 341 Project 2",
-    "description": "Evolutionary Martial Arts DB API",
+    "title": "Lindsey Myers - API",
+    "description": "CSE 341 Project 2",
     "version": "1.0.0"
   },
   "host": "cse341lmyersproject2.herokuapp.com",
   "basePath": "/",
   "tags": [
     {
-      "name": "students",
-      "description": "Operations for students"
+      "name": "Students",
+      "description": "Operations for Students"
     },
     {
-      "name": "instructors",
-      "description": "Operations for instructors"
+      "name": "Instructors",
+      "description": "Operations for Instructors"
     }
   ],
-  "schemes": ["https"],
+  "schemes": [
+    "https"
+  ],
   "paths": {
     "/api-docs": {
       "get": {
@@ -28,13 +30,20 @@
     },
     "/students/": {
       "get": {
-        "tags": ["students"],
+        "tags": [
+          "Students"
+        ],
         "description": "",
-        "produces": ["application/json"],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"
@@ -42,7 +51,9 @@
         }
       },
       "post": {
-        "tags": ["students"],
+        "tags": [
+          "Students"
+        ],
         "description": "",
         "parameters": [
           {
@@ -82,6 +93,9 @@
         "responses": {
           "201": {
             "description": "Created"
+          },
+          "412": {
+            "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"
@@ -91,9 +105,13 @@
     },
     "/students/{id}": {
       "get": {
-        "tags": ["students"],
+        "tags": [
+          "Students"
+        ],
         "description": "",
-        "produces": ["application/json"],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -106,13 +124,18 @@
           "200": {
             "description": "OK"
           },
+          "400": {
+            "description": "Bad Request"
+          },
           "500": {
             "description": "Internal Server Error"
           }
         }
       },
       "put": {
-        "tags": ["students"],
+        "tags": [
+          "Students"
+        ],
         "description": "",
         "parameters": [
           {
@@ -159,13 +182,21 @@
           "204": {
             "description": "No Content"
           },
+          "400": {
+            "description": "Bad Request"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
           "500": {
             "description": "Internal Server Error"
           }
         }
       },
       "delete": {
-        "tags": ["students"],
+        "tags": [
+          "Students"
+        ],
         "description": "",
         "parameters": [
           {
@@ -179,6 +210,9 @@
           "204": {
             "description": "No Content"
           },
+          "400": {
+            "description": "Bad Request"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -187,13 +221,20 @@
     },
     "/instructors/": {
       "get": {
-        "tags": ["instructors"],
+        "tags": [
+          "Instructors"
+        ],
         "description": "",
-        "produces": ["application/json"],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"
@@ -201,7 +242,9 @@
         }
       },
       "post": {
-        "tags": ["instructors"],
+        "tags": [
+          "Instructors"
+        ],
         "description": "",
         "parameters": [
           {
@@ -222,16 +265,13 @@
                 "beltLevel": {
                   "example": "any"
                 },
-                "classGroup": {
+                "style": {
                   "example": "any"
                 },
-                "instructor": {
+                "strengths": {
                   "example": "any"
                 },
-                "parentFirstName": {
-                  "example": "any"
-                },
-                "parentLastName": {
+                "classes": {
                   "example": "any"
                 }
               }
@@ -242,6 +282,9 @@
           "201": {
             "description": "Created"
           },
+          "412": {
+            "description": "Precondition Failed"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -250,9 +293,13 @@
     },
     "/instructors/{id}": {
       "get": {
-        "tags": ["instructors"],
+        "tags": [
+          "Instructors"
+        ],
         "description": "",
-        "produces": ["application/json"],
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -265,13 +312,18 @@
           "200": {
             "description": "OK"
           },
+          "400": {
+            "description": "Bad Request"
+          },
           "500": {
             "description": "Internal Server Error"
           }
         }
       },
       "put": {
-        "tags": ["instructors"],
+        "tags": [
+          "Instructors"
+        ],
         "description": "",
         "parameters": [
           {
@@ -298,16 +350,13 @@
                 "beltLevel": {
                   "example": "any"
                 },
-                "classGroup": {
+                "style": {
                   "example": "any"
                 },
-                "instructor": {
+                "strengths": {
                   "example": "any"
                 },
-                "parentFirstName": {
-                  "example": "any"
-                },
-                "parentLastName": {
+                "classes": {
                   "example": "any"
                 }
               }
@@ -318,13 +367,21 @@
           "204": {
             "description": "No Content"
           },
+          "400": {
+            "description": "Bad Request"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          },
           "500": {
             "description": "Internal Server Error"
           }
         }
       },
       "delete": {
-        "tags": ["instructors"],
+        "tags": [
+          "Instructors"
+        ],
         "description": "",
         "parameters": [
           {
@@ -337,6 +394,9 @@
         "responses": {
           "204": {
             "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"

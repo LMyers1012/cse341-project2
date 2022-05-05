@@ -3,6 +3,7 @@ const ObjectId = require('mongodb').ObjectId;
 
 // Get entire list of instructors from mongodb
 async function getAllInstructors(req, res, next) {
+  // #swagger.tags = ['Instructors']
   try {
     mongodb
       .getDb()
@@ -23,6 +24,7 @@ async function getAllInstructors(req, res, next) {
 
 // Get a single instructor by id
 const getInstructorById = async (req, res, next) => {
+  // #swagger.tags = ['Instructors']
   if (!ObjectId.isValid(req.params.id)) {
     res.status(400).json('Must use a valid contact id to find a contact.');
   }
@@ -46,6 +48,7 @@ const getInstructorById = async (req, res, next) => {
 
 // Create a new instructor
 const createNewInstructor = async (req, res, next) => {
+  // #swagger.tags = ['Instructors']
   try {
     const instructor = {
       firstName: req.body.firstName,
@@ -78,6 +81,7 @@ const createNewInstructor = async (req, res, next) => {
 
 // Update one instructor by Id
 const updateInstructor = async (req, res, next) => {
+  // #swagger.tags = ['Instructors']
   if (!ObjectId.isValid(req.params.id)) {
     res.status(400).json('Must use a valid contact id to find a contact.');
   }
@@ -114,6 +118,7 @@ const updateInstructor = async (req, res, next) => {
 
 // Delete one instructor by Id
 const deleteInstructorById = async (req, res, next) => {
+  // #swagger.tags = ['Instructors']
   if (!ObjectId.isValid(req.params.id)) {
     res.status(400).json('Must use a valid contact id to find a contact.');
   }

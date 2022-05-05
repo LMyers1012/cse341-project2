@@ -7,6 +7,16 @@ const doc = {
   },
   host: 'cse341lmyersproject2.herokuapp.com',
   schemes: ['https'],
+  tags: [
+    {
+      name: 'Students',
+      description: 'Operations for Students',
+    },
+    {
+      name: 'Instructors',
+      description: 'Operations for Instructors',
+    },
+  ],
 };
 
 const outputFile = './swagger-output.json';
