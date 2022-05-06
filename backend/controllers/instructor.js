@@ -1,6 +1,6 @@
 // const { ServerSession } = require('mongodb');
-const mongodb = require('../models');
-const Instructor = mongodb.instructor;
+const db = require('../models');
+const Instructor = db.instructor;
 const ObjectId = require('mongodb').ObjectId;
 
 const getAllInstructors = async (req, res, next) => {
