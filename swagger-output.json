@@ -5,7 +5,7 @@
     "description": "CSE 341 Project 2",
     "version": "1.0.0"
   },
-  "host": "cse341lmyersproject2.herokuapp.com",
+  "host": "cse341lmyerstest.herokuapp.com",
   "basePath": "/",
   "tags": [
     {
@@ -233,9 +233,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       },
@@ -399,7 +396,7 @@
         }
       }
     },
-    "/users/": {
+    "/user/": {
       "get": {
         "tags": [
           "Users"
@@ -450,7 +447,7 @@
         }
       }
     },
-    "/users/{username}": {
+    "/user/{username}": {
       "get": {
         "tags": [
           "Users"
