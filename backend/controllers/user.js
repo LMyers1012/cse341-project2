@@ -2,7 +2,7 @@ const db = require('../models');
 const User = db.user;
 const passwordUtil = require('../helpers/passwordComplexity');
 
-module.exports.createNewUser = (req, res) => {
+const createNewUser = async (req, res) => {
   // #swagger.tags = ['Users']
   try {
     if (!req.body.username || !req.body.password) {
@@ -33,10 +33,11 @@ module.exports.createNewUser = (req, res) => {
   }
 };
 
-module.exports.getAllUsers = (req, res) => {
+const getAllUsers = async (req, res) => {
   // #swagger.tags = ['Users']
+  console.log('getting all users');
   try {
-    User.find({})
+    User.find()
       .then((data) => {
         res.status(200).send(data);
       })
@@ -48,9 +49,16 @@ module.exports.getAllUsers = (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
+
+  // try {
+  //   const request = await User.find();
+  //   res.json(request);
+  // } catch (err) {
+  //   res.status(500).json(err);
+  // }
 };
 
-module.exports.getUserByName = (req, res) => {
+const getUserByName = async (req, res) => {
   // #swagger.tags = ['Users']
   try {
     const username = req.params.username;
@@ -68,7 +76,7 @@ module.exports.getUserByName = (req, res) => {
   }
 };
 
-module.exports.updateUser = async (req, res) => {
+const updateUser = async (req, res) => {
   // #swagger.tags = ['Users']
   try {
     const username = req.params.username;
@@ -103,7 +111,7 @@ module.exports.updateUser = async (req, res) => {
   }
 };
 
-module.exports.deleteUser = async (req, res) => {
+const deleteUser = async (req, res) => {
   // #swagger.tags = ['Users']
   try {
     const username = req.params.username;
@@ -125,4 +133,12 @@ module.exports.deleteUser = async (req, res) => {
       .status(500)
       .json(err || 'Some error occurred while deleting the contact.');
   }
+};
+
+module.exports = {
+  getAllUsers,
+  getUserByName,
+  createNewUser,
+  updateUser,
+  deleteUser,
 };

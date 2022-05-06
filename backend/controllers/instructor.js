@@ -5,19 +5,26 @@ const ObjectId = require('mongodb').ObjectId;
 
 const getAllInstructors = async (req, res, next) => {
   // #swagger.tags = ['Instructors']
+  // try {
+  //   Instructor.find({})
+  //     .then((data) => {
+  //       res.status(200).send(data);
+  //     })
+  //     .catch((err) => {
+  //       res.status(500).send({
+  //         message:
+  //           err.message || 'An error occurred while retrieving instructors.',
+  //       });
+  //     });
+  // } catch (err) {
+  //   res.status(500).json(err);
+  // }
+  console.log('getting all instructors');
   try {
-    Instructor.find({})
-      .then((data) => {
-        res.status(200).send(data);
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message:
-            err.message || 'An error occurred while retrieving instructors.',
-        });
-      });
+    const request = await Instructor.find();
+    res.json(request);
   } catch (err) {
-    res.status(500).json(err);
+    next(err);
   }
 };
 
