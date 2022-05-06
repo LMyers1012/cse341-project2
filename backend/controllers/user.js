@@ -1,5 +1,6 @@
 const db = require('../models');
-const User = db.user;
+// const User = db.user;
+const User = require('../models/user');
 const passwordUtil = require('../helpers/passwordComplexity');
 
 const createNewUser = async (req, res) => {
