@@ -30,11 +30,27 @@ process.on('uncaughtException', (err, origin) => {
   );
 });
 
-mongodb.initDb((err, mongodb) => {
-  if (err) {
-    console.log(err);
-  } else {
-    app.listen(port);
-    console.log(`Connected to DB and listening on port ${port}`);
-  }
-});
+// mongodb.initDb((err, mongodb) => {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     app.listen(port);
+//     console.log(`Connected to DB and listening on port ${port}`);
+//   }
+// });
+
+const db = require('./backend/models');
+db.mongoose
+  .connect(db.url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    app.listen(port, () => {
+      console.log(`Database connected and server running on port ${port}.`);
+    });
+  })
+  .catch((err) => {
+    console.log('Cannot connect to the database.', err);
+    process.exit();
+  });

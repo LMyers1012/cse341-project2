@@ -16,6 +16,10 @@ const doc = {
       name: 'Instructors',
       description: 'Operations for Instructors',
     },
+    {
+      name: 'Users',
+      description: 'Operations for Users',
+    },
   ],
 };
 

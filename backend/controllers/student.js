@@ -2,7 +2,7 @@ const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 
 // Get entire list of students from mongodb
-async function getAllStudents(req, res, next) {
+const getAllStudents = async (req, res, next) => {
   // #swagger.tags = ['Students']
   try {
     mongodb
@@ -20,12 +20,12 @@ async function getAllStudents(req, res, next) {
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
-}
+};
 
 // Get a single student by id
 const getStudentById = async (req, res, next) => {
   // #swagger.tags = ['Students']
-  if (!ObjectId.isValid(req.params.id)) {
+  if (!ObjectId.isValid(req.params.studentid)) {
     res.status(400).json('Must use a valid contact id to find a contact.');
   }
   try {
@@ -33,7 +33,7 @@ const getStudentById = async (req, res, next) => {
       .getDb()
       .db()
       .collection('students')
-      .find({ _id: ObjectId(req.params.id) })
+      .find({ _id: ObjectId(req.params.studentid) })
       .toArray((err, result) => {
         if (err) {
           res.status(400).json({ message: err });
@@ -83,7 +83,7 @@ const createNewStudent = async (req, res, next) => {
 // Update one student by Id
 const updateStudent = async (req, res, next) => {
   // #swagger.tags = ['Students']
-  if (!ObjectId.isValid(req.params.id)) {
+  if (!ObjectId.isValid(req.params.studentid)) {
     res.status(400).json('Must use a valid contact id to find a contact.');
   }
   try {
@@ -102,7 +102,7 @@ const updateStudent = async (req, res, next) => {
       .getDb()
       .db()
       .collection('students')
-      .replaceOne({ _id: ObjectId(req.params.id) }, student);
+      .replaceOne({ _id: ObjectId(req.params.studentid) }, student);
     console.log(response);
     if (response.modifiedCount > 0) {
       res.status(204).send();
@@ -121,7 +121,7 @@ const updateStudent = async (req, res, next) => {
 // Delete one student by Id
 const deleteStudentById = async (req, res, next) => {
   // #swagger.tags = ['Students']
-  if (!ObjectId.isValid(req.params.id)) {
+  if (!ObjectId.isValid(req.params.studentid)) {
     res.status(400).json('Must use a valid contact id to find a contact.');
   }
   try {
@@ -129,7 +129,7 @@ const deleteStudentById = async (req, res, next) => {
       .getDb()
       .db()
       .collection('students')
-      .deleteOne({ _id: ObjectId(req.params.id) }, true);
+      .deleteOne({ _id: ObjectId(req.params.studentid) }, true);
     console.log(response);
     if (response.deletedCount > 0) {
       res.status(204).send();
