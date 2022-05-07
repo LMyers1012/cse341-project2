@@ -83,7 +83,7 @@ const updateUserById = async (req, res) => {
       return;
     }
     User.findOne({ username: username }, function (err, user) {
-      user.username = req.params.username;
+      user.username = req.body.username;
       user.password = req.body.password;
       user.save(function (err) {
         if (err) {
