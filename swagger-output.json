@@ -5,7 +5,7 @@
     "description": "CSE 341 Project 2",
     "version": "1.0.0"
   },
-  "host": "cse341lmyerstest.herokuapp.com",
+  "host": "cse341lmyersproject2.herokuapp.com",
   "basePath": "/",
   "tags": [
     {
