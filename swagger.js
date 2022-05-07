@@ -17,7 +17,7 @@ const doc = {
       description: 'Operations for Instructors',
     },
     {
-      name: 'Users',
+      name: 'User',
       description: 'Operations for Users',
     },
   ],

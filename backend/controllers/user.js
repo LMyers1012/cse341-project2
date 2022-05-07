@@ -6,33 +6,33 @@ const mongoose = require('mongoose');
 const { userValidSchema } = require('../helpers/validate');
 
 const getAllUsers = async (req, res) => {
-  // #swagger.tags = ['Users']
+  // #swagger.tags = ['User']
   console.log('getting all users');
-  // try {
-  //   User.find()
-  //     .then((data) => {
-  //       res.status(200).send(data);
-  //     })
-  //     .catch((err) => {
-  //       res.status(500).send({
-  //         message: err.message || 'Some error occurred while retrieving users.',
-  //       });
-  //     });
-  // } catch (err) {
-  //   res.status(500).json(err);
-  // }
-
   try {
-    const request = await UserSchema.find();
-    console.log(request);
-    res.json(request);
+    UserSchema.find()
+      .then((data) => {
+        res.status(200).send(data);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: err.message || 'Some error occurred while retrieving users.',
+        });
+      });
   } catch (err) {
     res.status(500).json(err);
   }
+
+  // try {
+  //   const request = await UserSchema.find();
+  //   console.log(request);
+  //   res.json(request);
+  // } catch (err) {
+  //   res.status(500).json(err);
+  // }
 };
 
 const getUserByName = async (req, res) => {
-  // #swagger.tags = ['Users']
+  // #swagger.tags = ['User']
   try {
     const username = req.params.username;
     User.find({ username: username })
@@ -50,7 +50,7 @@ const getUserByName = async (req, res) => {
 };
 
 const createNewUser = async (req, res) => {
-  // #swagger.tags = ['Users']
+  // #swagger.tags = ['User']
   try {
     if (!req.body.username || !req.body.password) {
       res.status(400).send({ message: 'Content can not be empty!' });
@@ -81,7 +81,7 @@ const createNewUser = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-  // #swagger.tags = ['Users']
+  // #swagger.tags = ['User']
   try {
     const username = req.params.username;
     if (!username) {
@@ -116,7 +116,7 @@ const updateUser = async (req, res) => {
 };
 
 const deleteUser = async (req, res) => {
-  // #swagger.tags = ['Users']
+  // #swagger.tags = ['User']
   try {
     const username = req.params.username;
     if (!username) {
