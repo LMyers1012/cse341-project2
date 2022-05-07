@@ -1,6 +1,6 @@
-// const db = require('../models');
-// const User = db.user;
-const UserSchema = require('../models/user');
+const db = require('../models');
+const UserSchema = db.user;
+// const UserSchema = require('../models/user');
 const passwordUtil = require('../helpers/passwordComplexity');
 const mongoose = require('mongoose');
 const { userValidSchema } = require('../helpers/validate');
@@ -9,7 +9,7 @@ const getAllUsers = async (req, res) => {
   // #swagger.tags = ['User']
   console.log('getting all users');
   try {
-    UserSchema.find()
+    UserSchema.find({})
       .then((data) => {
         res.status(200).send(data);
       })
