@@ -68,7 +68,7 @@ const createNewUser = (req, res) => {
   }
 };
 
-const updateUserById = async (req, res) => {
+const updateUserByName = async (req, res) => {
   // #swagger.tags = ['User']
   try {
     const username = req.params.username;
@@ -100,7 +100,7 @@ const updateUserById = async (req, res) => {
   }
 };
 
-const deleteUserById = async (req, res) => {
+const deleteUserByName = async (req, res) => {
   // #swagger.tags = ['User']
   try {
     const username = req.params.username;
@@ -128,6 +128,6 @@ module.exports = {
   getAllUsers,
   getUserByName,
   createNewUser,
-  updateUserById,
-  deleteUserById,
+  updateUserByName,
+  deleteUserByName,
 };
