@@ -28,11 +28,11 @@ const saveInstructor = (req, res, next) => {
   const validationRule = {
     firstName: 'required|string',
     lastName: 'required|string',
-    beltLevel: 'required|email',
+    beltLevel: 'required|string',
     birthday: 'required|string',
-    style: 'required|array',
-    strengths: 'required|array',
-    classes: 'required|array',
+    style: 'required|string',
+    strengths: 'string',
+    classes: 'string',
   };
   validate(req.body, validationRule, {}, (err, status) => {
     if (!status) {
