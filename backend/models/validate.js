@@ -1,17 +1,5 @@
 const validate = require('../helpers/validate');
 
-// function dateIsValid(date) {
-//   return Date.parse(date);
-// }
-
-// function stringIsValid(string) {
-//   if (string == null || string == '') {
-//     return false;
-//   } else {
-//     return true;
-//   }
-// }
-
 const saveStudent = (req, res, next) => {
   const validationRule = {
     firstName: 'required|string',
