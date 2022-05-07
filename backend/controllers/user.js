@@ -1,7 +1,53 @@
-const db = require('../models');
+// const db = require('../models');
 // const User = db.user;
-const User = require('../models/user');
+const UserSchema = require('../models/user');
 const passwordUtil = require('../helpers/passwordComplexity');
+const mongoose = require('mongoose');
+const { userValidSchema } = require('../helpers/validate');
+
+const getAllUsers = async (req, res) => {
+  // #swagger.tags = ['Users']
+  console.log('getting all users');
+  // try {
+  //   User.find()
+  //     .then((data) => {
+  //       res.status(200).send(data);
+  //     })
+  //     .catch((err) => {
+  //       res.status(500).send({
+  //         message: err.message || 'Some error occurred while retrieving users.',
+  //       });
+  //     });
+  // } catch (err) {
+  //   res.status(500).json(err);
+  // }
+
+  try {
+    const request = await UserSchema.find();
+    console.log(request);
+    res.json(request);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+const getUserByName = async (req, res) => {
+  // #swagger.tags = ['Users']
+  try {
+    const username = req.params.username;
+    User.find({ username: username })
+      .then((data) => {
+        res.status(200).send(data);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: err.message || 'Some error occurred while retrieving users.',
+        });
+      });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
 
 const createNewUser = async (req, res) => {
   // #swagger.tags = ['Users']
@@ -27,50 +73,6 @@ const createNewUser = async (req, res) => {
         res.status(500).send({
           message:
             err.message || 'Some error occurred while creating the user.',
-        });
-      });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-};
-
-const getAllUsers = async (req, res) => {
-  // #swagger.tags = ['Users']
-  console.log('getting all users');
-  // try {
-  //   User.find()
-  //     .then((data) => {
-  //       res.status(200).send(data);
-  //     })
-  //     .catch((err) => {
-  //       res.status(500).send({
-  //         message: err.message || 'Some error occurred while retrieving users.',
-  //       });
-  //     });
-  // } catch (err) {
-  //   res.status(500).json(err);
-  // }
-
-  try {
-    const request = await User.find();
-    console.log(request);
-    res.json(request);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-};
-
-const getUserByName = async (req, res) => {
-  // #swagger.tags = ['Users']
-  try {
-    const username = req.params.username;
-    User.find({ username: username })
-      .then((data) => {
-        res.status(200).send(data);
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message: err.message || 'Some error occurred while retrieving users.',
         });
       });
   } catch (err) {

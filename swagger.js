@@ -5,7 +5,7 @@ const doc = {
     title: 'Lindsey Myers - API',
     description: 'CSE 341 Project 2',
   },
-  host: 'cse341lmyersproject2.herokuapp.com',
+  host: 'cse341lmyerstest.herokuapp.com',
   schemes: ['https'],
   tags: [
     {
