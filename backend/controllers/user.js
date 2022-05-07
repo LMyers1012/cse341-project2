@@ -37,26 +37,27 @@ const createNewUser = async (req, res) => {
 const getAllUsers = async (req, res) => {
   // #swagger.tags = ['Users']
   console.log('getting all users');
-  try {
-    User.find()
-      .then((data) => {
-        res.status(200).send(data);
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message: err.message || 'Some error occurred while retrieving users.',
-        });
-      });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-
   // try {
-  //   const request = await User.find();
-  //   res.json(request);
+  //   User.find()
+  //     .then((data) => {
+  //       res.status(200).send(data);
+  //     })
+  //     .catch((err) => {
+  //       res.status(500).send({
+  //         message: err.message || 'Some error occurred while retrieving users.',
+  //       });
+  //     });
   // } catch (err) {
   //   res.status(500).json(err);
   // }
+
+  try {
+    const request = await User.find();
+    console.log(request);
+    res.json(request);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 };
 
 const getUserByName = async (req, res) => {
