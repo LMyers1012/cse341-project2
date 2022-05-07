@@ -5,16 +5,20 @@ const doc = {
     title: 'Lindsey Myers - API',
     description: 'CSE 341 Project 2',
   },
-  host: 'cse341lmyersproject2.herokuapp.com',
+  host: 'cse341lmyerstest.herokuapp.com',
   schemes: ['https'],
   tags: [
     {
-      name: 'Students',
+      name: 'Student',
       description: 'Operations for Students',
     },
     {
-      name: 'Instructors',
+      name: 'Instructor',
       description: 'Operations for Instructors',
+    },
+    {
+      name: 'User',
+      description: 'Operations for Users',
     },
   ],
 };

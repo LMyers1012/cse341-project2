@@ -5,16 +5,20 @@
     "description": "CSE 341 Project 2",
     "version": "1.0.0"
   },
-  "host": "cse341lmyersproject2.herokuapp.com",
+  "host": "cse341lmyerstest.herokuapp.com",
   "basePath": "/",
   "tags": [
     {
-      "name": "Students",
+      "name": "Student",
       "description": "Operations for Students"
     },
     {
-      "name": "Instructors",
+      "name": "Instructor",
       "description": "Operations for Instructors"
+    },
+    {
+      "name": "User",
+      "description": "Operations for Users"
     }
   ],
   "schemes": [
@@ -28,22 +32,16 @@
         "responses": {}
       }
     },
-    "/students/": {
+    "/student/": {
       "get": {
         "tags": [
-          "Students"
+          "Student"
         ],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"
@@ -52,7 +50,7 @@
       },
       "post": {
         "tags": [
-          "Students"
+          "Student"
         ],
         "description": "",
         "parameters": [
@@ -74,16 +72,7 @@
                 "beltLevel": {
                   "example": "any"
                 },
-                "classGroup": {
-                  "example": "any"
-                },
-                "instructor": {
-                  "example": "any"
-                },
-                "parentFirstName": {
-                  "example": "any"
-                },
-                "parentLastName": {
+                "parentName": {
                   "example": "any"
                 }
               }
@@ -94,8 +83,8 @@
           "201": {
             "description": "Created"
           },
-          "412": {
-            "description": "Precondition Failed"
+          "400": {
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"
@@ -103,18 +92,15 @@
         }
       }
     },
-    "/students/{id}": {
+    "/student/{studentid}": {
       "get": {
         "tags": [
-          "Students"
+          "Student"
         ],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
-            "name": "id",
+            "name": "studentid",
             "in": "path",
             "required": true,
             "type": "string"
@@ -124,8 +110,8 @@
           "200": {
             "description": "OK"
           },
-          "400": {
-            "description": "Bad Request"
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"
@@ -134,12 +120,12 @@
       },
       "put": {
         "tags": [
-          "Students"
+          "Student"
         ],
         "description": "",
         "parameters": [
           {
-            "name": "id",
+            "name": "studentid",
             "in": "path",
             "required": true,
             "type": "string"
@@ -168,10 +154,7 @@
                 "instructor": {
                   "example": "any"
                 },
-                "parentFirstName": {
-                  "example": "any"
-                },
-                "parentLastName": {
+                "parentName": {
                   "example": "any"
                 }
               }
@@ -185,9 +168,6 @@
           "400": {
             "description": "Bad Request"
           },
-          "412": {
-            "description": "Precondition Failed"
-          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -195,12 +175,12 @@
       },
       "delete": {
         "tags": [
-          "Students"
+          "Student"
         ],
         "description": "",
         "parameters": [
           {
-            "name": "id",
+            "name": "studentid",
             "in": "path",
             "required": true,
             "type": "string"
@@ -219,22 +199,16 @@
         }
       }
     },
-    "/instructors/": {
+    "/instructor/": {
       "get": {
         "tags": [
-          "Instructors"
+          "Instructor"
         ],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"
@@ -243,7 +217,7 @@
       },
       "post": {
         "tags": [
-          "Instructors"
+          "Instructor"
         ],
         "description": "",
         "parameters": [
@@ -268,10 +242,10 @@
                 "style": {
                   "example": "any"
                 },
-                "strengths": {
+                "classes": {
                   "example": "any"
                 },
-                "classes": {
+                "isTeaching": {
                   "example": "any"
                 }
               }
@@ -282,8 +256,8 @@
           "201": {
             "description": "Created"
           },
-          "412": {
-            "description": "Precondition Failed"
+          "400": {
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"
@@ -291,18 +265,15 @@
         }
       }
     },
-    "/instructors/{id}": {
+    "/instructor/{instructorid}": {
       "get": {
         "tags": [
-          "Instructors"
+          "Instructor"
         ],
         "description": "",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
-            "name": "id",
+            "name": "instructorid",
             "in": "path",
             "required": true,
             "type": "string"
@@ -312,8 +283,8 @@
           "200": {
             "description": "OK"
           },
-          "400": {
-            "description": "Bad Request"
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"
@@ -322,12 +293,12 @@
       },
       "put": {
         "tags": [
-          "Instructors"
+          "Instructor"
         ],
         "description": "",
         "parameters": [
           {
-            "name": "id",
+            "name": "instructorid",
             "in": "path",
             "required": true,
             "type": "string"
@@ -353,10 +324,10 @@
                 "style": {
                   "example": "any"
                 },
-                "strengths": {
+                "classes": {
                   "example": "any"
                 },
-                "classes": {
+                "isTeaching": {
                   "example": "any"
                 }
               }
@@ -370,8 +341,151 @@
           "400": {
             "description": "Bad Request"
           },
-          "412": {
-            "description": "Precondition Failed"
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Instructor"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "instructorid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/user/": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/user/{username}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "password": {
+                  "example": "any"
+                },
+                "displayName": {
+                  "example": "any"
+                },
+                "info": {
+                  "example": "any"
+                },
+                "profile": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"
@@ -380,12 +494,12 @@
       },
       "delete": {
         "tags": [
-          "Instructors"
+          "User"
         ],
         "description": "",
         "parameters": [
           {
-            "name": "id",
+            "name": "username",
             "in": "path",
             "required": true,
             "type": "string"
