@@ -1,16 +1,10 @@
 const router = require('express').Router();
-const studentsController = require('../controllers/student');
-const validation = require('../models/validate');
+const studentController = require('../controllers/student');
 
-// Call functions based on url entered
-router.get('/', studentsController.getAllStudents);
-router.get('/:studentid', studentsController.getStudentById);
-router.post('/', validation.saveStudent, studentsController.createNewStudent);
-router.put(
-  '/:studentid',
-  validation.saveStudent,
-  studentsController.updateStudent
-);
-router.delete('/:studentid', studentsController.deleteStudentById);
+router.get('/', studentController.getAllStudents);
+router.get('/:studentid', studentController.getStudent);
+router.post('/', studentController.createNewStudent);
+router.put('/:studentid', studentController.updateStudentById);
+router.delete('/:studentid', studentController.deleteStudentById);
 
 module.exports = router;

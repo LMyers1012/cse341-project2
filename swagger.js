@@ -9,11 +9,11 @@ const doc = {
   schemes: ['https'],
   tags: [
     {
-      name: 'Students',
+      name: 'Student',
       description: 'Operations for Students',
     },
     {
-      name: 'Instructors',
+      name: 'Instructor',
       description: 'Operations for Instructors',
     },
     {

@@ -1,15 +1,11 @@
 const db = require('../models');
-const UserSchema = db.user;
-// const UserSchema = require('../models/user');
-const passwordUtil = require('../helpers/passwordComplexity');
-const mongoose = require('mongoose');
-const { userValidSchema } = require('../helpers/validate');
+const User = db.user;
+const passwordUtil = require('../helpers/passwordComplexityCheck');
 
-const getAllUsers = async (req, res) => {
+const getAllUsers = (req, res) => {
   // #swagger.tags = ['User']
-  console.log('getting all users');
   try {
-    UserSchema.find({})
+    User.find({})
       .then((data) => {
         res.status(200).send(data);
       })
@@ -21,17 +17,9 @@ const getAllUsers = async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-
-  // try {
-  //   const request = await UserSchema.find();
-  //   console.log(request);
-  //   res.json(request);
-  // } catch (err) {
-  //   res.status(500).json(err);
-  // }
 };
 
-const getUserByName = async (req, res) => {
+const getUserByName = (req, res) => {
   // #swagger.tags = ['User']
   try {
     const username = req.params.username;
@@ -49,7 +37,7 @@ const getUserByName = async (req, res) => {
   }
 };
 
-const createNewUser = async (req, res) => {
+const createNewUser = (req, res) => {
   // #swagger.tags = ['User']
   try {
     if (!req.body.username || !req.body.password) {
@@ -80,7 +68,7 @@ const createNewUser = async (req, res) => {
   }
 };
 
-const updateUser = async (req, res) => {
+const updateUserById = async (req, res) => {
   // #swagger.tags = ['User']
   try {
     const username = req.params.username;
@@ -115,7 +103,7 @@ const updateUser = async (req, res) => {
   }
 };
 
-const deleteUser = async (req, res) => {
+const deleteUserById = async (req, res) => {
   // #swagger.tags = ['User']
   try {
     const username = req.params.username;
@@ -143,6 +131,6 @@ module.exports = {
   getAllUsers,
   getUserByName,
   createNewUser,
-  updateUser,
-  deleteUser,
+  updateUserById,
+  deleteUserById,
 };

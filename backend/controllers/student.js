@@ -1,155 +1,133 @@
-const mongodb = require('../db/connect');
-const ObjectId = require('mongodb').ObjectId;
+const read = require('body-parser/lib/read');
+const { ObjectId } = require('mongodb');
+const db = require('../models');
+const Student = db.student;
 
-// Get entire list of students from mongodb
 const getAllStudents = async (req, res, next) => {
-  // #swagger.tags = ['Students']
+  // #swagger.tags = ['Student']
   try {
-    mongodb
-      .getDb()
-      .db()
-      .collection('students')
-      .find()
-      .toArray((err, lists) => {
-        if (err) {
-          res.status(400).json({ message: err });
-        }
-        res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(lists);
+    Student.find({})
+      .then((data) => {
+        res.status(200).send(data);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message:
+            err.message || 'An error occurred while retrieving students.',
+        });
       });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).json(err);
   }
 };
 
-// Get a single student by id
-const getStudentById = async (req, res, next) => {
-  // #swagger.tags = ['Students']
-  if (!ObjectId.isValid(req.params.studentid)) {
-    res.status(400).json('Must use a valid contact id to find a contact.');
-  }
+const getStudent = (req, res) => {
+  // #swagger.tags = ['Student']
+  const studentId = ObjectId(req.params.studentid);
+  Student.find({ _id: studentId })
+    .then((data) => {
+      if (!data)
+        res
+          .status(404)
+          .send({ message: 'No student found with id: ' + studentId });
+      else res.send(data[0]);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: 'Error retrieving student with id=' + studentId,
+        error: err,
+      });
+    });
+};
+
+const createNewStudent = (req, res) => {
+  // #swagger.tags = ['Student']
   try {
-    mongodb
-      .getDb()
-      .db()
-      .collection('students')
-      .find({ _id: ObjectId(req.params.studentid) })
-      .toArray((err, result) => {
-        if (err) {
-          res.status(400).json({ message: err });
-        }
-        res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(lists[0]);
+    if (
+      !req.body.firstName ||
+      !req.body.lastName ||
+      !req.body.birthday ||
+      !req.body.beltLevel ||
+      !req.body.parentName
+    ) {
+      res.status(400).send({ message: 'Content cannot be empty.' });
+      return;
+    }
+    const student = new Student(req.body);
+    student
+      .save()
+      .then((data) => {
+        console.log(data);
+        res.status(201).send(data);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message:
+            err.message || 'An error occurred while creating the student.',
+        });
       });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).json(err);
   }
 };
 
-// Create a new student
-const createNewStudent = async (req, res, next) => {
-  // #swagger.tags = ['Students']
+const updateStudentById = async (req, res) => {
+  // #swagger.tags = ['Student']
   try {
-    const student = {
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      birthday: req.body.birthday,
-      beltLevel: req.body.beltLevel,
-      classGroup: req.body.classGroup,
-      instructor: req.body.instructor,
-      parentFirstName: req.body.parentFirstName,
-      parentLastName: req.body.parentLastName,
-    };
-
-    const response = await mongodb
-      .getDb()
-      .db()
-      .collection('students')
-      .insertOne(student);
-    if (response.acknowledged) {
-      res.status(201).json(response);
-    } else {
-      res
-        .status(500)
-        .json(
-          response.error || 'An error occurred while creating the contact.'
-        );
+    const studentId = ObjectId(req.params.studentid);
+    if (!studentId) {
+      res.status(400).send({ message: 'Invalid student ID supplied.' });
+      return;
     }
+    Student.findOne({ _id: studentId }, function (err, student) {
+      student.firstName = req.body.firstName;
+      student.lastName = req.body.lastName;
+      student.birthday = req.body.birthday;
+      student.beltLevel = req.body.beltLevel;
+      student.classGroup = req.body.classGroup;
+      student.instructor = req.body.instructor;
+      student.parentName = req.body.parentName;
+      student.save(function (err) {
+        if (err) {
+          res
+            .status(500)
+            .json(err || 'An error occurred while updating the student.');
+        } else {
+          res.status(204).send();
+        }
+      });
+    });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).json(err);
   }
 };
 
-// Update one student by Id
-const updateStudent = async (req, res, next) => {
-  // #swagger.tags = ['Students']
-  if (!ObjectId.isValid(req.params.studentid)) {
-    res.status(400).json('Must use a valid contact id to find a contact.');
-  }
+const deleteStudentById = async (req, res) => {
+  // #swagger.tags = ['Student']
   try {
-    const student = {
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      birthday: req.body.birthday,
-      beltLevel: req.body.beltLevel,
-      classGroup: req.body.classGroup,
-      instructor: req.body.instructor,
-      parentFirstName: req.body.parentFirstName,
-      parentLastName: req.body.parentLastName,
-    };
-
-    const response = await mongodb
-      .getDb()
-      .db()
-      .collection('students')
-      .replaceOne({ _id: ObjectId(req.params.studentid) }, student);
-    console.log(response);
-    if (response.modifiedCount > 0) {
-      res.status(204).send();
-    } else {
-      res
-        .status(500)
-        .json(
-          response.error || 'An error occurred while updating the contact.'
-        );
+    const studentId = ObjectId(req.params.studentid);
+    if (!studentId) {
+      res.status(400).send({ message: 'Invalid student ID supplied.' });
+      return;
     }
+    Student.deleteOne({ _id: studentId }, function (err, result) {
+      if (err) {
+        res
+          .status(500)
+          .json(err || 'An error occurred while deleting the student.');
+      } else {
+        res.status(204).send(result);
+      }
+    });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    res.status(500).json(err);
   }
 };
 
-// Delete one student by Id
-const deleteStudentById = async (req, res, next) => {
-  // #swagger.tags = ['Students']
-  if (!ObjectId.isValid(req.params.studentid)) {
-    res.status(400).json('Must use a valid contact id to find a contact.');
-  }
-  try {
-    const response = await mongodb
-      .getDb()
-      .db()
-      .collection('students')
-      .deleteOne({ _id: ObjectId(req.params.studentid) }, true);
-    console.log(response);
-    if (response.deletedCount > 0) {
-      res.status(204).send();
-    } else {
-      res
-        .status(500)
-        .json(
-          response.error || 'An error occurred while deleting the contact.'
-        );
-    }
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-};
-
-// Export the functions
 module.exports = {
   getAllStudents,
-  getStudentById,
+  getStudent,
   createNewStudent,
-  updateStudent,
+  updateStudentById,
   deleteStudentById,
 };
