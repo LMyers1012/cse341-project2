@@ -467,13 +467,7 @@
                 "password": {
                   "example": "any"
                 },
-                "displayName": {
-                  "example": "any"
-                },
-                "info": {
-                  "example": "any"
-                },
-                "profile": {
+                "username": {
                   "example": "any"
                 }
               }
