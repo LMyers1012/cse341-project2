@@ -17,7 +17,7 @@
       "description": "Operations for Instructors"
     },
     {
-      "name": "Users",
+      "name": "User",
       "description": "Operations for Users"
     }
   ],
@@ -399,7 +399,7 @@
     "/user/": {
       "get": {
         "tags": [
-          "Users"
+          "User"
         ],
         "description": "",
         "parameters": [],
@@ -414,7 +414,7 @@
       },
       "post": {
         "tags": [
-          "Users"
+          "User"
         ],
         "description": "",
         "parameters": [
@@ -450,7 +450,7 @@
     "/user/{username}": {
       "get": {
         "tags": [
-          "Users"
+          "User"
         ],
         "description": "",
         "parameters": [
@@ -472,7 +472,7 @@
       },
       "put": {
         "tags": [
-          "Users"
+          "User"
         ],
         "description": "",
         "parameters": [
@@ -518,7 +518,7 @@
       },
       "delete": {
         "tags": [
-          "Users"
+          "User"
         ],
         "description": "",
         "parameters": [
