@@ -1,30 +1,13 @@
-module.exports = (mongoose) => {
-  const Student = mongoose.model(
-    'students',
-    mongoose.Schema({
-      firstName: {
-        type: String,
-      },
-      lastName: {
-        type: String,
-      },
-      birthday: {
-        type: String,
-      },
-      beltLevel: {
-        type: String,
-      },
-      classGroup: {
-        type: String,
-      },
-      instructor: {
-        type: String,
-      },
-      parentName: {
-        type: String,
-      },
-    })
-  );
+const mongoose = require('mongoose');
 
-  return Student;
-};
+const studentSchema = new mongoose.Schema({
+  firstName: String,
+  lastName: String,
+  birthday: String,
+  beltLevel: String,
+  classGroup: String,
+  instructor: [String],
+  parentName: [String],
+});
+
+module.exports = mongoose.model('students', studentSchema);

@@ -6,8 +6,8 @@ mongoose.Promise = global.Promise;
 const db = {};
 db.mongoose = mongoose;
 db.url = dbConfig.url;
-db.user = require('./user.js')(mongoose);
-db.student = require('./student.js')(mongoose);
-db.instructor = require('./instructor.js')(mongoose);
+db.user = require('./user.js');
+db.student = require('./student.js');
+db.instructor = require('./instructor.js');
 
 module.exports = db;

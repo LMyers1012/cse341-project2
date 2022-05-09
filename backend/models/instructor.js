@@ -1,32 +1,13 @@
-// const { boolean } = require('joi');
+const mongoose = require('mongoose');
 
-module.exports = (mongoose) => {
-  const Instructor = mongoose.model(
-    'instructors',
-    mongoose.Schema({
-      firstName: {
-        type: String,
-      },
-      lastName: {
-        type: String,
-      },
-      birthday: {
-        type: String,
-      },
-      beltLevel: {
-        type: String,
-      },
-      style: {
-        type: [String],
-      },
-      isTeaching: {
-        type: Boolean,
-      },
-      classes: {
-        type: [String],
-      },
-    })
-  );
+const instructorSchema = new mongoose.Schema({
+  firstName: String,
+  lastName: String,
+  birthday: String,
+  beltLevel: String,
+  style: [String],
+  isTeaching: Boolean,
+  classes: [String],
+});
 
-  return Instructor;
-};
+module.exports = mongoose.model('instructors', instructorSchema);
