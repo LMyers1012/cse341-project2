@@ -2,7 +2,12 @@
 // HEROKU PRODUCTION Deploy 
 // *************************
 
+
+
+// -------
 // USERS
+// -------
+
 ### READ ALL USERS from HEROKU
 GET https://cse341lmyersproject2.herokuapp.com/user
 ### READ ONE USER from HEROKU
@@ -42,7 +47,10 @@ DELETE http://cse341lmyersproject2.herokuapp.com/user/fluffernutter1 HTTP/1.1
 
 
 
+
+// ----------
 // STUDENTS
+// ----------
 
 ### READ ALL STUDENTS from HEROKU
 GET https://cse341lmyersproject2.herokuapp.com/student 
@@ -100,11 +108,9 @@ DELETE http://cse341lmyersproject2.herokuapp.com/student/6275f9e1d84c05da48de3b2
 
 
 
-
-
-
+// -------------
 // INSTRUCTORS
-
+// -------------
 
 ### READ ALL INSTRUCTORS from HEROKU
 GET https://cse341lmyersproject2.herokuapp.com/instructor 
