@@ -1,12 +1,16 @@
 const db = require('../models');
 const User = db.user;
-const passwordUtil = require('../helpers/passwordComplexityCheck');
+const checkPass = require('../helpers/passwordComplexityCheck');
 
 const getAllUsers = (req, res) => {
   // #swagger.tags = ['User']
   try {
     User.find({})
       .then((data) => {
+        data.forEach((user) => {
+          user.password = obfuscate(user.password);
+        });
+        // console.log(data);
         res.status(200).send(data);
       })
       .catch((err) => {
@@ -35,6 +39,9 @@ const getUserByName = async (req, res) => {
     }
     User.find({ username: username })
       .then((data) => {
+        data.forEach((user) => {
+          user.password = obfuscate(user.password);
+        });
         res.status(200).send(data);
       })
       .catch((err) => {
@@ -51,11 +58,11 @@ const createNewUser = (req, res) => {
   // #swagger.tags = ['User']
   try {
     if (!req.body.username || !req.body.password) {
-      res.status(400).send({ message: 'Content can not be empty!' });
+      res.status(400).send({ message: 'Content cannot be empty!' });
       return;
     }
     const password = req.body.password;
-    const passwordCheck = passwordUtil.passwordPass(password);
+    const passwordCheck = checkPass.passwordPass(password);
     if (passwordCheck.error) {
       res.status(400).send({ message: passwordCheck.error });
       return;
@@ -86,8 +93,12 @@ const updateUserByName = async (req, res) => {
       res.status(400).send({ message: 'Invalid Username Supplied' });
       return;
     }
+    if (!req.body.username || !req.body.password) {
+      res.status(400).send({ message: 'Content cannot be empty!' });
+      return;
+    }
     const password = req.body.password;
-    const passwordCheck = passwordUtil.passwordPass(password);
+    const passwordCheck = checkPass.passwordPass(password);
     if (passwordCheck.error) {
       res.status(400).send({ message: passwordCheck.error });
       return;
@@ -139,6 +150,21 @@ const deleteUserByName = async (req, res) => {
       .json(err || 'Some error occurred while deleting the contact.');
   }
 };
+
+function obfuscate(string) {
+  // In the real world, I would obfuscate the entire password and
+  // not leave the first two characters. I left them here intentionally
+  // so you could tell that the password had been updated if you
+  // so choose in the update functions.
+  let stringLength = string.length;
+  let firstTwo = string.substring(0, 2);
+  let asteriskString = '';
+  for (let i = 0; i < stringLength - 2; i++) {
+    asteriskString += '*';
+  }
+  let obfuscatedString = firstTwo + asteriskString;
+  return obfuscatedString;
+}
 
 module.exports = {
   getAllUsers,
