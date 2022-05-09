@@ -30,15 +30,6 @@ process.on('uncaughtException', (err, origin) => {
   );
 });
 
-// mongodb.initDb((err, mongodb) => {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     app.listen(port);
-//     console.log(`Connected to DB and listening on port ${port}`);
-//   }
-// });
-
 const db = require('./backend/models');
 db.mongoose
   .connect(db.url, {

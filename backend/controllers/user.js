@@ -19,10 +19,20 @@ const getAllUsers = (req, res) => {
   }
 };
 
-const getUserByName = (req, res) => {
+const getUserByName = async (req, res) => {
   // #swagger.tags = ['User']
   try {
     const username = req.params.username;
+    if (!username) {
+      res.status(400).send({ message: 'Invalid Username Supplied' });
+      return;
+    }
+    const userExists = await User.findOne({ username: username });
+    // if (userExists) console.log('userExists');
+    if (!userExists) {
+      res.status(400).send({ message: 'This username does not exist.' });
+      return;
+    }
     User.find({ username: username })
       .then((data) => {
         res.status(200).send(data);
@@ -104,8 +114,14 @@ const deleteUserByName = async (req, res) => {
   // #swagger.tags = ['User']
   try {
     const username = req.params.username;
+    // console.log(username);
     if (!username) {
       res.status(400).send({ message: 'Invalid Username Supplied' });
+      return;
+    }
+    const userExists = await User.findOne({ username: username });
+    if (!userExists) {
+      res.status(400).send({ message: 'This username does not exist.' });
       return;
     }
     User.deleteOne({ username: username }, function (err, result) {
