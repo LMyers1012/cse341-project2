@@ -4,6 +4,8 @@ const db = require('./backend/models');
 const morgan = require('morgan');
 const exphbs = require('express-handlebars');
 const path = require('path');
+const passport = require('passport');
+const session = require('express-session');
 
 const port = process.env.PORT || 8080;
 const app = express();
@@ -13,8 +15,24 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
+// Passport Config
+require('./backend/db/passport')(passport);
+
 app.engine('.hbs', exphbs.engine({ defaultLayout: 'main', extname: '.hbs' }));
 app.set('view engine', '.hbs');
+
+// Sessions (must be above passport middleware)
+app.use(
+  session({
+    secret: 'keyboard dog',
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Static folder
 app.use(express.static(path.join(__dirname, 'public')));
