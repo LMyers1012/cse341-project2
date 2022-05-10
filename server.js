@@ -1,9 +1,23 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-// const mongodb = require('./backend/db/connect');
+const db = require('./backend/models');
+const morgan = require('morgan');
+const exphbs = require('express-handlebars');
+const path = require('path');
 
 const port = process.env.PORT || 8080;
 const app = express();
+
+// Logging while in dev mode
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
+
+app.engine('.hbs', exphbs.engine({ defaultLayout: 'main', extname: '.hbs' }));
+app.set('view engine', '.hbs');
+
+// Static folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 app
   .use(bodyParser.json())
@@ -30,7 +44,6 @@ process.on('uncaughtException', (err, origin) => {
   );
 });
 
-const db = require('./backend/models');
 db.mongoose
   .connect(db.url, {
     useNewUrlParser: true,
