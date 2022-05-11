@@ -59,6 +59,12 @@
                 "beltLevel": {
                   "example": "any"
                 },
+                "classGroup": {
+                  "example": "any"
+                },
+                "instructor": {
+                  "example": "any"
+                },
                 "parentName": {
                   "example": "any"
                 }

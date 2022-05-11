@@ -48,6 +48,8 @@ const createNewStudent = (req, res) => {
       !req.body.lastName ||
       !req.body.birthday ||
       !req.body.beltLevel ||
+      !req.body.classGroup ||
+      !req.body.instructor ||
       !req.body.parentName
     ) {
       res.status(400).send({ message: 'Content cannot be empty.' });
