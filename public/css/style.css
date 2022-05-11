@@ -11,3 +11,15 @@ p {
 .logo {
   width: 50px;
 }
+
+.container {
+  text-align: center !important;
+}
+
+.sidenav {
+  text-align: right !important;
+}
+
+.container h3 {
+  margin-top: 3em !important;
+}

@@ -2,9 +2,9 @@ const router = require('express').Router();
 const userController = require('../controllers/user');
 
 router.get('/', userController.getAllUsers);
-router.get('/:username', userController.getUserByName);
-router.post('/', userController.createNewUser);
-router.put('/:username', userController.updateUserByName);
-router.delete('/:username', userController.deleteUserByName);
+router.get('/:displayName', userController.getUserByDisplayName);
+// router.post('/', userController.createNewUser);
+// router.put('/:username', userController.updateUserByName);
+router.delete('/:googleId', userController.deleteUserByGoogleId);
 
 module.exports = router;

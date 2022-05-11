@@ -6,6 +6,8 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const passport = require('passport');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
+const mongoose = require('mongoose');
 
 const port = process.env.PORT || 8080;
 const app = express();
@@ -27,6 +29,7 @@ app.use(
     secret: 'keyboard dog',
     resave: false,
     saveUninitialized: false,
+    store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }),
   })
 );
 
@@ -53,6 +56,8 @@ app
     next();
   })
   .use('/', require('./backend/routes'));
+
+app.use('/auth', require('./backend/routes/auth'));
 
 // Catch-all for logging errors in console
 process.on('uncaughtException', (err, origin) => {

@@ -1,17 +1,24 @@
 const router = require('express').Router();
+const { ensureAuth, ensureGuest } = require('../middleware/auth');
 
 // @desc    Login/Landing Page
 // @route   GET /
-router.get('/', (req, res) => {
+router.get('/', ensureGuest, (req, res) => {
   res.render('login', {
     layout: 'login',
   });
 });
 
-router.use('/api-docs', require('./swagger'));
+router.get('/dashboard', ensureAuth, (req, res) => {
+  res.render('dashboard', {
+    name: req.user.firstName,
+  });
+});
 
-router.use('/student', require('./student'));
-router.use('/instructor', require('./instructor'));
-router.use('/user', require('./user'));
+router.use('/api-docs', ensureAuth, require('./swagger'));
+
+router.use('/student', ensureAuth, require('./student'));
+router.use('/instructor', ensureAuth, require('./instructor'));
+router.use('/user', ensureAuth, require('./user'));
 
 module.exports = router;
