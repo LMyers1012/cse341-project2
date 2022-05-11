@@ -8,6 +8,7 @@ const passport = require('passport');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const mongoose = require('mongoose');
+const dotenv = require('dotenv').config();
 
 const port = process.env.PORT || 8080;
 const app = express();
