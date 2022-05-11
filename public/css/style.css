@@ -3,7 +3,7 @@ p {
 }
 
 .login-container {
-  width: 600px;
+  width: 90%;
   margin-top: 50px;
   text-align: center;
 }
@@ -20,6 +20,12 @@ p {
   text-align: right !important;
 }
 
-.container h3 {
+/* .container h3 {
   margin-top: 3em !important;
+} */
+
+@media screen and (min-width: 665px) {
+  .login-container {
+    width: 600px;
+  }
 }
