@@ -2,20 +2,20 @@
 // HEROKU PRODUCTION Deploy 
 // *************************
 
-
+// !!!!! THESE WILL NOT WORK BECAUSE OF OAUTH IMPLEMENTATION !!!!!
 
 // -------
 // USERS
 // -------
 
 ### READ ALL USERS from HEROKU
-GET https://cse341lmyersproject2.herokuapp.com/user
+GET http://cse341lmyersproject2.herokuapp.com/user
 ### READ ONE USER from HEROKU
-GET https://cse341lmyersproject2.herokuapp.com/user/
+GET http://cse341lmyersproject2.herokuapp.com/user/Zoey%20Myers
 
 
 ### CREATE USER on HEROKU (will validate correctly)
-POST https://cse341lmyersproject2.herokuapp.com/user HTTP/1.1
+POST http://cse341lmyersproject2.herokuapp.com/user HTTP/1.1
 Content-Type: application/json
 
 {
@@ -24,7 +24,7 @@ Content-Type: application/json
 }
 
 ### CREATE USER on HEROKU (will NOT validate correctly, wrong password format)
-POST https://cse341lmyersproject2.herokuapp.com/user HTTP/1.1
+POST http://cse341lmyersproject2.herokuapp.com/user HTTP/1.1
 Content-Type: application/json
 
 {
@@ -53,9 +53,9 @@ DELETE http://cse341lmyersproject2.herokuapp.com/user/fluffernutter1 HTTP/1.1
 // ----------
 
 ### READ ALL STUDENTS from HEROKU
-GET https://cse341lmyersproject2.herokuapp.com/student 
+GET http://cse341lmyersproject2.herokuapp.com/student 
 ### READ ONE STUDENT from HEROKU
-GET https://cse341lmyersproject2.herokuapp.com/student/627014541bfc2d16275a765d
+GET http://cse341lmyersproject2.herokuapp.com/student/627014541bfc2d16275a765d
 
 
 ### CREATE STUDENT on HEROKU (will validate correctly)
@@ -113,9 +113,9 @@ DELETE http://cse341lmyersproject2.herokuapp.com/student/6275f9e1d84c05da48de3b2
 // -------------
 
 ### READ ALL INSTRUCTORS from HEROKU
-GET https://cse341lmyersproject2.herokuapp.com/instructor 
+GET http://cse341lmyersproject2.herokuapp.com/instructor 
 ### READ ONE INSTRUCTOR from HEROKU
-GET https://cse341lmyersproject2.herokuapp.com/instructor/627035b7f2fb6c0d79f3667b
+GET http://cse341lmyersproject2.herokuapp.com/instructor/627035b7f2fb6c0d79f3667b
 
 
 ### CREATE INSTRUCTOR on HEROKU (will validate correctly)
