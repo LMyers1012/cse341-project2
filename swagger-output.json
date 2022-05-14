@@ -5,7 +5,7 @@
     "description": "CSE 341 Project 2",
     "version": "1.0.0"
   },
-  "host": "cse341lmyersproject2.herokuapp.com",
+  "host": "localhost:8080",
   "basePath": "/",
   "tags": [
     {
@@ -21,9 +21,7 @@
       "description": "Operations for Users"
     }
   ],
-  "schemes": [
-    "https"
-  ],
+  "schemes": ["http"],
   "paths": {
     "/": {
       "get": {
@@ -48,9 +46,7 @@
     },
     "/student/": {
       "get": {
-        "tags": [
-          "Student"
-        ],
+        "tags": ["Student"],
         "description": "",
         "parameters": [],
         "responses": {
@@ -63,9 +59,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Student"
-        ],
+        "tags": ["Student"],
         "description": "",
         "parameters": [
           {
@@ -114,9 +108,7 @@
     },
     "/student/{studentid}": {
       "get": {
-        "tags": [
-          "Student"
-        ],
+        "tags": ["Student"],
         "description": "",
         "parameters": [
           {
@@ -139,9 +131,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Student"
-        ],
+        "tags": ["Student"],
         "description": "",
         "parameters": [
           {
@@ -194,9 +184,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Student"
-        ],
+        "tags": ["Student"],
         "description": "",
         "parameters": [
           {
@@ -221,9 +209,7 @@
     },
     "/instructor/": {
       "get": {
-        "tags": [
-          "Instructor"
-        ],
+        "tags": ["Instructor"],
         "description": "",
         "parameters": [],
         "responses": {
@@ -236,9 +222,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Instructor"
-        ],
+        "tags": ["Instructor"],
         "description": "",
         "parameters": [
           {
@@ -287,9 +271,7 @@
     },
     "/instructor/{instructorid}": {
       "get": {
-        "tags": [
-          "Instructor"
-        ],
+        "tags": ["Instructor"],
         "description": "",
         "parameters": [
           {
@@ -312,9 +294,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Instructor"
-        ],
+        "tags": ["Instructor"],
         "description": "",
         "parameters": [
           {
@@ -367,9 +347,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Instructor"
-        ],
+        "tags": ["Instructor"],
         "description": "",
         "parameters": [
           {
@@ -394,9 +372,7 @@
     },
     "/user/": {
       "get": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "description": "",
         "parameters": [],
         "responses": {
@@ -411,9 +387,7 @@
     },
     "/user/{displayName}": {
       "get": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "description": "",
         "parameters": [
           {
@@ -438,9 +412,7 @@
     },
     "/user/{googleId}": {
       "delete": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "description": "",
         "parameters": [
           {

@@ -74,7 +74,7 @@ app
   })
   .use('/', require('./backend/routes'));
 
-app.use('/auth', require('./backend/routes/auth'));
+// app.use('/auth', require('./backend/routes/auth'));
 
 // Catch-all for logging errors in console
 process.on('uncaughtException', (err, origin) => {
