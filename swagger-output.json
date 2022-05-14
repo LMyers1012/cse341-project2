@@ -21,57 +21,11 @@
       "description": "Operations for Users"
     }
   ],
-  "schemes": [
-    "https"
-  ],
+  "schemes": ["https"],
   "paths": {
-    "/": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-    },
-    "/dashboard": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-    },
-    "/auth/google": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-    },
-    "/auth/google/callback": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-    },
-    "/auth/logout": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-    },
-    "/api-docs/": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-    },
     "/student/": {
       "get": {
-        "tags": [
-          "Student"
-        ],
+        "tags": ["Student"],
         "description": "",
         "parameters": [],
         "responses": {
@@ -84,9 +38,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Student"
-        ],
+        "tags": ["Student"],
         "description": "",
         "parameters": [
           {
@@ -135,9 +87,7 @@
     },
     "/student/{studentid}": {
       "get": {
-        "tags": [
-          "Student"
-        ],
+        "tags": ["Student"],
         "description": "",
         "parameters": [
           {
@@ -160,9 +110,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Student"
-        ],
+        "tags": ["Student"],
         "description": "",
         "parameters": [
           {
@@ -215,9 +163,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Student"
-        ],
+        "tags": ["Student"],
         "description": "",
         "parameters": [
           {
@@ -242,9 +188,7 @@
     },
     "/instructor/": {
       "get": {
-        "tags": [
-          "Instructor"
-        ],
+        "tags": ["Instructor"],
         "description": "",
         "parameters": [],
         "responses": {
@@ -257,9 +201,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Instructor"
-        ],
+        "tags": ["Instructor"],
         "description": "",
         "parameters": [
           {
@@ -308,9 +250,7 @@
     },
     "/instructor/{instructorid}": {
       "get": {
-        "tags": [
-          "Instructor"
-        ],
+        "tags": ["Instructor"],
         "description": "",
         "parameters": [
           {
@@ -333,9 +273,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Instructor"
-        ],
+        "tags": ["Instructor"],
         "description": "",
         "parameters": [
           {
@@ -388,9 +326,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Instructor"
-        ],
+        "tags": ["Instructor"],
         "description": "",
         "parameters": [
           {
@@ -415,9 +351,7 @@
     },
     "/user/": {
       "get": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "description": "",
         "parameters": [],
         "responses": {
@@ -432,9 +366,7 @@
     },
     "/user/{displayName}": {
       "get": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "description": "",
         "parameters": [
           {
@@ -459,9 +391,7 @@
     },
     "/user/{googleId}": {
       "delete": {
-        "tags": [
-          "User"
-        ],
+        "tags": ["User"],
         "description": "",
         "parameters": [
           {
