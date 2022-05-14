@@ -15,7 +15,7 @@ router.get('/dashboard', ensureAuth, (req, res) => {
   });
 });
 
-router.use('/auth', ensureGuest, require('./auth'));
+router.use('/auth', require('./auth'));
 router.use('/api-docs', ensureAuth, require('./swagger'));
 router.use('/student', ensureAuth, require('./student'));
 router.use('/instructor', ensureAuth, require('./instructor'));
