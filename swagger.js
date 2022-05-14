@@ -6,7 +6,7 @@ const doc = {
     description: 'CSE 341 Project 2',
   },
   host: 'cse341lmyersproject2.herokuapp.com',
-  schemes: ['http'],
+  schemes: ['https'],
   tags: [
     {
       name: 'Student',
